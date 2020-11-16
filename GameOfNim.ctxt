@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=GameOfNim
+comment0.text=\r\n\ This\ class\ creates\ the\ game\ and\ choices\ how\ the\ computer\ will\ play.\r\n\ On\ random\ the\ computer\ will\ play\ smart\ or\ dummb,\ and\ the\ compter\ will\r\n\ choice\ at\ random\ if\ the\ user\ or\ system\ will\ go\ first.\ Whoever\ leaves\ the\ pile\r\n\ with\ one\ marble\ wins.\r\n\r\n\ @author\ Dylan\ Bragiel\r\n\ @version\ 4/11/2019\r\n
+comment1.params=min\ max
+comment1.target=GameOfNim(int,\ int)
+comment1.text=@param\ min\ sets\ minimum\ value\ of\ random\ pile\r\n\ @param\ max\ sets\ max\ value\ of\ randomp\ pile\r\n\ \r\n
+comment2.params=
+comment2.target=void\ smartComputer()
+comment2.text=This\ method\ creates\ the\ smart\ \r\n\ movement\ for\ the\ computer.\r\n\ \r\n
+comment3.params=
+comment3.target=void\ dumbComputer()
+comment3.text=\r\n\ This\ method\ creates\ the\ movement\ for\ the\ dumb\r\n\ computer.\r\n
+comment4.params=
+comment4.target=void\ userMove()
+comment4.text=\r\n\ This\ method\ takes\ the\ user\ move\ and\ check's\ if\ it\ follows\r\n\ the\ rules\ of\ the\ game.\r\n
+comment5.params=
+comment5.target=void\ play()
+comment5.text=\r\n\ This\ method\ calls\ all\ the\ other\ methods,\ and\ runs\ the\ game.\r\n
+numComments=6
