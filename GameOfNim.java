@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 /**
  * This class creates the game and choices how the computer will play.
- * On random the computer will play smart or dummb, and the compter will
+ * On random the computer will play easy or hard, and the compter will
  * choice at random if the user or system will go first. Whoever leaves the pile
  * with one marble wins.
  *
@@ -15,7 +15,7 @@ public class GameOfNim
     Scanner input=new Scanner(System.in);
     Random rand=new Random();
     boolean compFirst=rand.nextBoolean();
-    boolean smartComp=rand.nextBoolean();
+    boolean hardComp=rand.nextBoolean();
     private int pile;
     private int start;
     private int computer;
@@ -24,16 +24,17 @@ public class GameOfNim
     /**@param min sets minimum value of random pile
      * @param max sets max value of randomp pile
      * 
+     * Creates a pile of marbles inbetween the min and max value given.
      */
     public GameOfNim (int min, int max){
         pile=rand.nextInt(max-min + 1)+min;
     }
 
-    /**This method creates the smart 
+    /**This method creates the hard 
      * movement for the computer.
      * 
      */
-    public void smartComputer(){ 
+    public void hardComputer(){ 
         if(pile == 3 || pile == 7 ||
         pile == 15 || pile == 31 ||
         pile ==63){
@@ -72,24 +73,22 @@ public class GameOfNim
             System.out.println("COMPUTER WINS!");
         }
     }
-
     /**
-     * This method creates the movement for the dumb
+     * This method creates the movement for the easy
      * computer.
      */
-    public void dumbComputer() {  
-        if(pile != 1){int dumbMove = rand.nextInt(pile/2)+1;
-            pile -= dumbMove;
-            System.out.println("Computers turn:     Removed " + (int)dumbMove + " marble(s)." + " Current number of marbles: " + pile);
+    public void easyComputer() {  
+        if(pile != 1){int easyMove = rand.nextInt(pile/2)+1;
+            pile -= easyMove;
+            System.out.println("Computers turn:     Removed " + (int)easyMove + " marble(s)." + " Current number of marbles: " + pile);
         }
         if(pile==1){ 
             System.out.println("COMPUTER WINS!");
         }
     }
-
     /**
      * This method takes the user move and check's if it follows
-     * the rules of the game.
+     * the rules of the game. 
      */
     public void userMove() { 
         if(pile != 1){
@@ -110,31 +109,46 @@ public class GameOfNim
             }
         }
     }
-
     /**
-     * This method calls all the other methods, and runs the game.
+     * This method calls all the other methods(hardComp,compFirst,userMove), 
+     * and plays the game. The game ends when the pile is less than 1.
      */
     public void play() {
         System.out.println("Game Begins");
         System.out.println("Initially there are "+ pile +" marbles in the pile");    
         do{ 
-            if(smartComp) { 
+            if(hardComp) { 
                 if(compFirst){ 
-                    smartComputer();
+                    hardComputer();
                     userMove();
                 } else { 
                     userMove();
-                    smartComputer();
+                    hardComputer();
                 }
             } else { 
                 if(compFirst){ 
-                    dumbComputer();
+                    easyComputer();
                     userMove();
                 } else { 
                     userMove();
-                    dumbComputer();
+                    easyComputer();
                 }
             }
         } while(pile > 1);
-}
+
+    }
+
+    /**@param min sets minimum value of random pile
+     * @param max sets max value of random pile
+     * 
+     * This function checks if the min size is larger than the max size which would
+     * result in a few erros in the game. IF this happens the function throws an error
+     * message.
+     */
+    public void pileError(int min, int max){
+        if(min > max){
+            System.out.println("ERROR PILE SIZE INCORRECT");
+
+        }
+    }
 }

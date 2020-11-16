@@ -18,7 +18,9 @@ public class Project5
         int max= console.nextInt();
         
         GameOfNim game = new GameOfNim(min, max);
+        game.pileError(min,max);
         game.play();
+       
         
         System.out.println("Do you want to try again? type 'yes' or 'no'");
         output = console.next();
